@@ -1,10 +1,15 @@
 import os
 import pyaudio
 import wave
+import pygame
 
 from azure.cognitiveservices.speech import AudioDataStream, SpeechConfig, SpeechSynthesizer, SpeechSynthesisOutputFormat
 from azure.cognitiveservices.speech.audio import AudioOutputConfig
 from anaconda_navigator.utils.encoding import write
+from pygame._sdl2 import get_num_audio_devices, get_audio_device_name #Get playback device names
+from pygame import mixer #Playing sound
+from pygame import pygame_dir
+from playsound import playsound
 
 filePath = '../../temp/temp.wav'
 
@@ -53,8 +58,26 @@ def streamWav(filename):
     #stream.wri
     stream.close()
     play.terminate()
-    
-    
-mktemp()
-writeToWav(filePath)
-streamWav(filePath)
+
+def playToMic():
+    #mixer.init()
+    #print([get_audio_device_name(x, 0).decode() for x in range(get_num_audio_devices(0))])
+    #mixer.quit()
+    #streamWav(filePath)
+    #mixer.pre_init(devicename='CABLE Input (VB-Audio Virtual Cable)')
+    #playsound('../../temp/temp.wav')
+    #os.system("../../temp/temp.wav")
+    mixer.init(devicename = 'CABLE Input (VB-Audio Virtual Cable)') #Initialize it with the correct device
+    mixer.music.load("../../temp/temp.wav") #Load the mp3
+    mixer.music.play(0)
+
+    while mixer.music.get_busy():
+        pygame.time.Clock().tick(10)
+        playsound('../../temp/temp.wav')
+    mixer.quit()
+    #sound.play(0)
+    #mixer.init()
+#mktemp()
+#writeToWav(filePath)
+#streamWav(filePath)
+playToMic()
