@@ -1,0 +1,112 @@
+[0m2021-07-08 22:06:09 V/Net 3558994956: [BotSessionSyncer] Loading server list from cache.[0m
+[92m2021-07-08 22:06:09 I/Net 3558994956: [ServerList] Server list: 203.205.255.224:8080, 113.96.12.85:80, msfwifi.3g.qq.com:8080, 170.106.72.156:10001, 60.28.172.102:14000, 36.155.228.220:443, 169.47.230.125:10001.[0m
+[0m2021-07-08 22:06:11 V/Net 3558994956: Send: wtlogin.exchange_emp[0m
+[0m2021-07-08 22:06:11 V/Net 3558994956: Recv: wtlogin.exchange_emp[0m
+[0m2021-07-08 22:06:12 V/Net 3558994956: Send: StatSvc.register(online)[0m
+[0m2021-07-08 22:06:12 V/Net 3558994956: Recv: StatSvc.register[0m
+[0m2021-07-08 22:06:12 V/Net 3558994956: [BotSessionSyncer] Loading BdhSession from cache file[0m
+[92m2021-07-08 22:06:12 I/Net 3558994956: [MessageSvcSyncer] Syncing friend message history...[0m
+[92m2021-07-08 22:06:12 I/Net 3558994956: [ContactUpdater] Start loading friend list...[0m
+[0m2021-07-08 22:06:12 V/Net 3558994956: Send: StatSvc.GetDevLoginInfo(StatSvc.GetDevLoginInfo)[0m
+[92m2021-07-08 22:06:12 I/Net 3558994956: [ContactUpdater] Start loading stranger list...[0m
+[0m2021-07-08 22:06:12 V/Net 3558994956: Send: friendlist.getFriendGroupList(friendlist.getFriendGroupList)[0m
+[0m2021-07-08 22:06:12 V/Net 3558994956: Send: OidbSvc.0x496(OidbSvc.0x496)[0m
+[0m2021-07-08 22:06:12 V/Net 3558994956: Send: OidbSvc.0x5d2_0(OidbSvc.0x5d2_0)[0m
+[0m2021-07-08 22:06:12 V/Net 3558994956: Recv: MessageSvc.PushForceOffline[0m
+[91m2021-07-08 22:06:12 W/Net 3558994956: [BotInitProcessor] An exception was thrown during initialization process of Bot 3558994956. Trying to ignore the error and continue logging in...
+java.util.concurrent.CancellationException: NetworkHandler closed
+	at kotlinx.coroutines.ExceptionsKt.CancellationException(Exceptions.kt:22)
+	at kotlinx.coroutines.JobKt__JobKt.cancel(Job.kt:608)
+	at kotlinx.coroutines.JobKt.cancel(Unknown Source)
+	at net.mamoe.mirai.internal.network.handler.NetworkHandlerSupport.close(NetworkHandlerSupport.kt:56)
+	at net.mamoe.mirai.internal.network.impl.netty.NettyNetworkHandler.close(NettyNetworkHandler.kt:41)
+	at net.mamoe.mirai.internal.network.handler.selector.SelectorNetworkHandler.close(SelectorNetworkHandler.kt:79)
+	at net.mamoe.mirai.internal.network.protocol.packet.chat.receive.MessageSvcPushForceOffline.handle(MessageSvc.PushForceOffline.kt:35)
+	at net.mamoe.mirai.internal.network.protocol.packet.chat.receive.MessageSvcPushForceOffline.handle(MessageSvc.PushForceOffline.kt:25)
+	at net.mamoe.mirai.internal.network.components.CallPacketFactoryPacketHandler.handlePacket(PacketHandler.kt:108)
+	at net.mamoe.mirai.internal.network.components.PacketHandlerChain.handlePacket(PacketHandler.kt:40)
+	at net.mamoe.mirai.internal.network.handler.NetworkHandlerSupport$collectReceived$1.invokeSuspend(NetworkHandlerSupport.kt:87)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:106)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:571)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:750)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:678)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:665)
+Caused by: net.mamoe.mirai.internal.network.impl.netty.ForceOfflineException: Closed by MessageSvc.PushForceOffline: net.mamoe.mirai.internal.network.protocol.data.jce.RequestPushForceOffline@3a08988
+	... 11 more
+[0m
+[91m2021-07-08 22:06:12 W/Net 3558994956: [BotInitProcessor] An exception was thrown during initialization process of Bot 3558994956. Trying to ignore the error and continue logging in...
+java.util.concurrent.CancellationException: NetworkHandler closed
+	at kotlinx.coroutines.ExceptionsKt.CancellationException(Exceptions.kt:22)
+	at kotlinx.coroutines.JobKt__JobKt.cancel(Job.kt:608)
+	at kotlinx.coroutines.JobKt.cancel(Unknown Source)
+	at net.mamoe.mirai.internal.network.handler.NetworkHandlerSupport.close(NetworkHandlerSupport.kt:56)
+	at net.mamoe.mirai.internal.network.impl.netty.NettyNetworkHandler.close(NettyNetworkHandler.kt:41)
+	at net.mamoe.mirai.internal.network.handler.selector.SelectorNetworkHandler.close(SelectorNetworkHandler.kt:79)
+	at net.mamoe.mirai.internal.network.protocol.packet.chat.receive.MessageSvcPushForceOffline.handle(MessageSvc.PushForceOffline.kt:35)
+	at net.mamoe.mirai.internal.network.protocol.packet.chat.receive.MessageSvcPushForceOffline.handle(MessageSvc.PushForceOffline.kt:25)
+	at net.mamoe.mirai.internal.network.components.CallPacketFactoryPacketHandler.handlePacket(PacketHandler.kt:108)
+	at net.mamoe.mirai.internal.network.components.PacketHandlerChain.handlePacket(PacketHandler.kt:40)
+	at net.mamoe.mirai.internal.network.handler.NetworkHandlerSupport$collectReceived$1.invokeSuspend(NetworkHandlerSupport.kt:87)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:106)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:571)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:750)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:678)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:665)
+Caused by: net.mamoe.mirai.internal.network.impl.netty.ForceOfflineException: Closed by MessageSvc.PushForceOffline: net.mamoe.mirai.internal.network.protocol.data.jce.RequestPushForceOffline@3a08988
+	... 11 more
+[0m
+[91m2021-07-08 22:06:12 W/Net 3558994956: net.mamoe.mirai.internal.network.impl.netty.ForceOfflineException: Closed by MessageSvc.PushForceOffline: net.mamoe.mirai.internal.network.protocol.data.jce.RequestPushForceOffline@3a08988
+net.mamoe.mirai.internal.network.impl.netty.ForceOfflineException: Closed by MessageSvc.PushForceOffline: net.mamoe.mirai.internal.network.protocol.data.jce.RequestPushForceOffline@3a08988
+	at net.mamoe.mirai.internal.network.protocol.packet.chat.receive.MessageSvcPushForceOffline.handle(MessageSvc.PushForceOffline.kt:35)
+	at net.mamoe.mirai.internal.network.protocol.packet.chat.receive.MessageSvcPushForceOffline.handle(MessageSvc.PushForceOffline.kt:25)
+	at net.mamoe.mirai.internal.network.components.CallPacketFactoryPacketHandler.handlePacket(PacketHandler.kt:108)
+	at net.mamoe.mirai.internal.network.components.PacketHandlerChain.handlePacket(PacketHandler.kt:40)
+	at net.mamoe.mirai.internal.network.handler.NetworkHandlerSupport$collectReceived$1.invokeSuspend(NetworkHandlerSupport.kt:87)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:106)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:571)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:750)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:678)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:665)
+[0m
+[0m2021-07-08 22:06:13 V/Net 3558994956: [BotSessionSyncer] Loading server list from cache.[0m
+[92m2021-07-08 22:06:13 I/Net 3558994956: [ServerList] Server list: 203.205.255.224:8080, 113.96.12.85:80, msfwifi.3g.qq.com:8080, 170.106.72.156:10001, 60.28.172.102:14000, 36.155.228.220:443, 169.47.230.125:10001.[0m
+[0m2021-07-08 22:06:13 V/Net 3558994956: Send: wtlogin.login[0m
+[0m2021-07-08 22:06:13 V/Net 3558994956: Recv: wtlogin.login[0m
+[0m2021-07-08 22:06:13 V/Net 3558994956: Send: StatSvc.register(online)[0m
+[0m2021-07-08 22:06:14 V/Net 3558994956: Recv: StatSvc.register[0m
+[0m2021-07-08 22:06:14 V/Net 3558994956: [BotSessionSyncer] Loading BdhSession from cache file[0m
+[92m2021-07-08 22:06:14 I/Net 3558994956: [MessageSvcSyncer] Syncing friend message history...[0m
+[92m2021-07-08 22:06:14 I/Net 3558994956: [ContactUpdater] Start loading stranger list...[0m
+[92m2021-07-08 22:06:14 I/Net 3558994956: [ContactUpdater] Start loading friend list...[0m
+[0m2021-07-08 22:06:14 V/Net 3558994956: Send: OidbSvc.0x5d2_0(OidbSvc.0x5d2_0)[0m
+[0m2021-07-08 22:06:14 V/Net 3558994956: Send: OidbSvc.0x496(OidbSvc.0x496)[0m
+[0m2021-07-08 22:06:14 V/Net 3558994956: Send: StatSvc.GetDevLoginInfo(StatSvc.GetDevLoginInfo)[0m
+[0m2021-07-08 22:06:14 V/Net 3558994956: Send: friendlist.getFriendGroupList(friendlist.getFriendGroupList)[0m
+[0m2021-07-08 22:06:14 V/Net 3558994956: Recv: OidbSvc.0x5d2_0[0m
+[0m2021-07-08 22:06:14 V/Net 3558994956: Recv: StatSvc.GetDevLoginInfo[0m
+[92m2021-07-08 22:06:14 I/Net 3558994956: [ContactUpdater] Successfully loaded stranger list: 0 in total[0m
+[92m2021-07-08 22:06:14 I/Net 3558994956: [OtherClientUpdater] No OtherClient online.[0m
+[0m2021-07-08 22:06:14 V/Net 3558994956: Recv: OidbSvc.0x496[0m
+[92m2021-07-08 22:06:14 I/Net 3558994956: [ContactUpdater] Start loading group list...[0m
+[0m2021-07-08 22:06:14 V/Net 3558994956: Send: friendlist.GetTroopListReqV2(friendlist.GetTroopListReqV2)[0m
+[92m2021-07-08 22:06:15 I/Net 3558994956: [MessageSvcSyncer] Syncing friend message history: Success.[0m
+[0m2021-07-08 22:06:15 V/Net 3558994956: Recv: friendlist.getFriendGroupList[0m
+[0m2021-07-08 22:06:15 V/Net 3558994956: [ContactUpdater] Loading friend list: 3/3[0m
+[92m2021-07-08 22:06:15 I/Net 3558994956: [ContactUpdater] Successfully loaded friend list: 3 in total[0m
+[0m2021-07-08 22:06:15 V/Net 3558994956: Recv: friendlist.GetTroopListReqV2[0m
+[0m2021-07-08 22:06:15 V/Net 3558994956: Send: friendlist.GetTroopMemberListReq(friendlist.GetTroopMemberListReq)[0m
+[0m2021-07-08 22:06:16 V/Net 3558994956: Recv: friendlist.GetTroopMemberListReq[0m
+[92m2021-07-08 22:06:16 I/Net 3558994956: [ContactUpdater] Successfully loaded group list: 1 in total.[0m
+[92m2021-07-08 22:06:16 I/Net 3558994956: [KeyRefreshProcessor] Scheduled key refresh in 23h 55min 0.0s.[0m
+[92m2021-07-08 22:06:16 I/Net 3558994956: [KeyRefreshProcessor] Scheduled refresh login session in 19d 23h 55min 0.0s.[0m
+[0m2021-07-08 22:06:17 V/Net 3558994956: Recv: ConfigPushSvc.PushReq[0m
+[92m2021-07-08 22:06:17 I/Net 3558994956: [ServerList] Server list: 203.205.255.221:8080, 113.96.13.95:80, 170.106.75.13:10001, 36.155.228.220:443, 169.47.230.125:10001, msfwifi.3g.qq.com:8080, 60.28.172.67:14000.[0m
+[0m2021-07-08 22:06:17 V/Net 3558994956: [BotSessionSyncer] Saving bdh session to cache[0m
+[0m2021-07-08 22:06:17 V/Net 3558994956: [BotSessionSyncer] Saving server list to cache[0m
+[0m2021-07-08 22:06:17 V/Net 3558994956: Send: ConfigPushSvc.PushResp(ConfigPushSvc.PushResp)[0m
+[0m2021-07-08 22:06:17 V/Net 3558994956: Recv: ConfigPushSvc.PushReq[0m
+[0m2021-07-08 22:06:17 V/Net 3558994956: [BotSessionSyncer] Saving bdh session to cache[0m
+[0m2021-07-08 22:06:17 V/Net 3558994956: Send: ConfigPushSvc.PushResp(ConfigPushSvc.PushResp)[0m
