@@ -9,10 +9,10 @@ bcc = Broadcast(loop=loop)
 app = GraiaMiraiApplication(
     broadcast=bcc,
     connect_info=Session(
-        host="http://localhost:8080", # 濉叆 httpapi 鏈嶅姟杩愯鐨勫湴鍧�
-        verifyKey="TextToSpeech", # 濉叆 authKey
-        account=3558994956, # 浣犵殑鏈哄櫒浜虹殑 qq 鍙�
-        websocket=True # Graia 宸茬粡鍙互鏍规嵁鎵�閰嶇疆鐨勬秷鎭帴鏀剁殑鏂瑰紡鏉ヤ繚璇佹秷鎭帴鏀堕儴鍒嗙殑姝ｅ父杩愪綔.
+        host="http://localhost:8080",
+        verifyKey="TextToSpeech",
+        account=3558994956,
+        websocket=True
     )
 )
 @bcc.receiver("FriendMessage")
