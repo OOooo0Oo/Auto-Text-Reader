@@ -2,6 +2,7 @@ import os
 import pyaudio
 import wave
 import pygame
+import subprocess
 
 from azure.cognitiveservices.speech import AudioDataStream, SpeechConfig, SpeechSynthesizer, SpeechSynthesisOutputFormat
 from azure.cognitiveservices.speech.audio import AudioOutputConfig
@@ -11,7 +12,6 @@ from pygame import mixer #Playing sound
 from pygame import pygame_dir
 from playsound import playsound
 
-filePath = '../../temp/temp.wav'
 
 def mktemp():
     path = '../../temp/temp.wav'
@@ -25,18 +25,22 @@ def writeToWav(filename):
     speech_key, service_region = "6a6d33d49c9947558a3c424286c2550d", "westus"
 
     speech_config = SpeechConfig(subscription=speech_key, region=service_region)
+    speech_config.set_speech_synthesis_output_format(SpeechSynthesisOutputFormat["Riff8Khz8BitMonoALaw"])
     audio_config = AudioOutputConfig(filename = filename)
-    ssml_string = open("ssml.xml", "r",encoding='UTF-8').read()
+    ssml_string = open("../TTS/ssml.xml", "r",encoding='UTF-8').read()
+    synthesizer = SpeechSynthesizer(speech_config=speech_config, audio_config = None)
+    result = synthesizer.speak_ssml_async(ssml_string).get()
+
+    stream = AudioDataStream(result)
+    stream.save_to_wav_file(filename)
 
 
-    synthesizer = SpeechSynthesizer(speech_config=speech_config, audio_config = audio_config)
-    #print("Type some text that you want to speak...")
-    #text = input()
-    synthesizer.speak_ssml_async(ssml_string)
+def wav_to_amr(wave_path, arm_path, ffpeg_path):
+    error = subprocess.call([ffpeg_path+"/ffmpeg.exe", '-i', wave_path, '-y', arm_path], stderr=subprocess.DEVNULL, stdout=subprocess.DEVNULL)
+    if error:
+        return
+    print ('amr success')
 
-#if __name__=='__main__':
-#    main()
-#audio_config = AudioOutputConfig(filename="path/to/write/file.wav")
 
 def streamWav(filename):
     chunk = 1024
@@ -77,7 +81,17 @@ def playToMic():
     mixer.quit()
     #sound.play(0)
     #mixer.init()
-#mktemp()
-writeToWav(filePath)
-#streamWav(filePath)
-#playToMic()
+def main():
+    #mktemp()
+
+    wav_Path = '../../temp/temp.wav'
+    arm_path = '../../temp/temp.amr'
+    ffpeg_path = '../../../ffmpeg/bin'
+
+    writeToWav(wav_Path)
+    wav_to_amr(wav_Path, arm_path, ffpeg_path)
+    #streamWav(filePath)
+    #playToMic()
+
+if __name__=='__main__':
+   main()
