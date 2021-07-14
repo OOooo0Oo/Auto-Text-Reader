@@ -8,12 +8,12 @@
     {
       "id": "org.bouncycastle:bcprov-jdk15on",
       "channel": "stable",
-      "version": "1.64",
+      "version": "",
       "type": "libs"
     },
     {
       "id": "net.mamoe:mirai-console",
-      "channel": "beta",
+      "channel": "stable",
       "version": "2.6.7",
       "type": "libs"
     },
@@ -29,8 +29,16 @@
       "version": "2.6.7",
       "type": "libs"
     },
+    {
+      "id": "net.mamoe:mirai-api-http",
+      "channel": "stable",
+      "version": "2.0.2",
+      "type": "plugins"
+    }
   ],
-  "disabled_scripts": [],
+  "disabled_scripts": [
+    "updater"
+  ],
   "proxy": "",
   "log_level": 0,
   "script_props": {}

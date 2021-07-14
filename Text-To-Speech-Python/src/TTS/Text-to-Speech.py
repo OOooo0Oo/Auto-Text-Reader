@@ -1,15 +1,10 @@
 import os
-import pyaudio
-import wave
-import pygame
+
 import subprocess
 
 from azure.cognitiveservices.speech import AudioDataStream, SpeechConfig, SpeechSynthesizer, SpeechSynthesisOutputFormat
 from azure.cognitiveservices.speech.audio import AudioOutputConfig
 from anaconda_navigator.utils.encoding import write
-from pygame._sdl2 import get_num_audio_devices, get_audio_device_name #Get playback device names
-from pygame import mixer #Playing sound
-from pygame import pygame_dir
 from playsound import playsound
 
 
@@ -39,9 +34,41 @@ def wav_to_amr(wave_path, arm_path, ffpeg_path):
     error = subprocess.call([ffpeg_path+"/ffmpeg.exe", '-i', wave_path, '-y', arm_path], stderr=subprocess.DEVNULL, stdout=subprocess.DEVNULL)
     if error:
         return
-    print ('amr success')
+    #print ('amr success')
 
 
+def main():
+    mktemp()
+    wav_Path = '../../temp/temp.wav'
+    arm_path = '../../temp/temp.amr'
+    ffpeg_path = '../../../ffmpeg/bin'
+    writeToWav(wav_Path)
+    wav_to_amr(wav_Path, arm_path, ffpeg_path)
+
+if __name__=='__main__':
+   main()
+
+'''
+Abandoned Code
+def playToMic():
+    #mixer.init()
+    #print([get_audio_device_name(x, 0).decode() for x in range(get_num_audio_devices(0))])
+    #mixer.quit()
+    #streamWav(filePath)
+    #mixer.pre_init(devicename='CABLE Input (VB-Audio Virtual Cable)')
+    #playsound('../../temp/temp.wav')
+    #os.system("../../temp/temp.wav")
+    mixer.init(devicename = 'CABLE Input (VB-Audio Virtual Cable)') #Initialize it with the correct device
+    mixer.music.load("../../temp/temp.wav") #Load the mp3
+    mixer.music.play(0)
+
+    while mixer.music.get_busy():
+        pygame.time.Clock().tick(10)
+        playsound('../../temp/temp.wav')
+    mixer.quit()
+    #sound.play(0)
+    #mixer.init()
+    
 def streamWav(filename):
     chunk = 1024
     file = wave.open(filename, 'rb')
@@ -62,36 +89,4 @@ def streamWav(filename):
     #stream.wri
     stream.close()
     play.terminate()
-
-def playToMic():
-    #mixer.init()
-    #print([get_audio_device_name(x, 0).decode() for x in range(get_num_audio_devices(0))])
-    #mixer.quit()
-    #streamWav(filePath)
-    #mixer.pre_init(devicename='CABLE Input (VB-Audio Virtual Cable)')
-    #playsound('../../temp/temp.wav')
-    #os.system("../../temp/temp.wav")
-    mixer.init(devicename = 'CABLE Input (VB-Audio Virtual Cable)') #Initialize it with the correct device
-    mixer.music.load("../../temp/temp.wav") #Load the mp3
-    mixer.music.play(0)
-
-    while mixer.music.get_busy():
-        pygame.time.Clock().tick(10)
-        playsound('../../temp/temp.wav')
-    mixer.quit()
-    #sound.play(0)
-    #mixer.init()
-def main():
-    #mktemp()
-
-    wav_Path = '../../temp/temp.wav'
-    arm_path = '../../temp/temp.amr'
-    ffpeg_path = '../../../ffmpeg/bin'
-
-    writeToWav(wav_Path)
-    wav_to_amr(wav_Path, arm_path, ffpeg_path)
-    #streamWav(filePath)
-    #playToMic()
-
-if __name__=='__main__':
-   main()
+'''
