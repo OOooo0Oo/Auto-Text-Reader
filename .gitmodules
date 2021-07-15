@@ -1,0 +1,3 @@
+[submodule "mirai-dice-release-noextra"]
+	path = mirai-dice-release-noextra
+	url = https://github.com/w4123/mirai-dice-release-noextra.git
