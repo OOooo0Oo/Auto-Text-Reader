@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Text-to-Speech.iml" filepath="$PROJECT_DIR$/Text-to-Speech.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Text-To-Speech-Python/Text-to-Speech-Python.iml" filepath="$PROJECT_DIR$/Text-To-Speech-Python/Text-to-Speech-Python.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Auto-Text-Reader.iml" filepath="$PROJECT_DIR$/Auto-Text-Reader.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Auto-Text-Reader/Text-to-Speech-Python.iml" filepath="$PROJECT_DIR$/Auto-Text-Reader/Text-to-Speech-Python.iml" />
     </modules>
   </component>
 </project>

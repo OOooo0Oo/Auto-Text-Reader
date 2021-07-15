@@ -152,7 +152,7 @@ def send_group_voice(http_host, target_id, session_key):
         "target": target_id,
         "messageChain": [
             {"type": "Voice",
-             "path": "../Text-To-Speech-Python/temp/temp.amr"
+             "path": "../Auto-Text-Reader/temp/temp.amr"
             }
         ]
     }
