@@ -1,0 +1,3 @@
+[submodule "mirai-dice-release-noextra"]
+	path = mirai-dice-release-noextra
+	url = git@github.com:OOooo0Oo/mirai-dice-release-noextra.git
