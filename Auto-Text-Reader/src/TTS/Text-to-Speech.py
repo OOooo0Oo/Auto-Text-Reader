@@ -1,3 +1,4 @@
+import configparser
 import os
 
 import subprocess
@@ -16,8 +17,8 @@ def mktemp():
         os.makedirs(path)            #makedirs 创建文件时如果路径不存在会创建这个路径
 
 
-def writeToWav(filename):
-    speech_key, service_region = "6a6d33d49c9947558a3c424286c2550d", "westus"
+def writeToWav(filename, apiKey, apiArea):
+    speech_key, service_region = apiKey, apiArea
 
     speech_config = SpeechConfig(subscription=speech_key, region=service_region)
     speech_config.set_speech_synthesis_output_format(SpeechSynthesisOutputFormat["Riff8Khz8BitMonoALaw"])
@@ -36,13 +37,20 @@ def wav_to_amr(wave_path, arm_path, ffpeg_path):
         return
     #print ('amr success')
 
+def getApi(config_path):
+    config = configparser.ConfigParser()
+    config.read(config_path)
+    return config["common"]["tts api key"], config["common"]["tts api area"]
+
 
 def main():
     mktemp()
     wav_Path = '../../temp/temp.wav'
     arm_path = '../../temp/temp.amr'
     ffpeg_path = '../../../ffmpeg/bin'
-    writeToWav(wav_Path)
+    config_path = "../../config/config.ini"
+    apiKey, apiArea = getApi(config_path)
+    writeToWav(wav_Path, apiKey, apiArea)
     wav_to_amr(wav_Path, arm_path, ffpeg_path)
 
 if __name__=='__main__':

@@ -4,6 +4,7 @@ import json
 import websockets
 import asyncio
 import xml.etree.ElementTree as ET
+import configparser
 
 '''
 {
@@ -183,6 +184,14 @@ def send_friend_voice(http_host, target_id, session_key):
 
 #read config.txt and get ids
 def read_ids():
+    config = configparser.ConfigParser()
+    config.read("../../config/config.ini")
+    bot_id = config["common"]["BotId"]
+    sender_id = config["common"]["SenderId"]
+    group_id = config["common"]["GroupId"]
+    print("*** Read Config IDs", bot_id, sender_id, group_id)
+    return bot_id, sender_id, group_id
+'''
     file = open("../../config/config.txt","r")
     bot_id = file.readlines()[0].split(":")[1]
     bot_id = bot_id.split("\n")[0]
@@ -192,9 +201,9 @@ def read_ids():
     file.seek(0)
     group_id = file.readlines()[3].split(":")[1]
     group_id = group_id.split("\n")[0]
-    print("*** Read Config IDs", bot_id, sender_id, group_id)
     file.close()
-    return bot_id, sender_id, group_id
+'''
+
 
 def main():
 

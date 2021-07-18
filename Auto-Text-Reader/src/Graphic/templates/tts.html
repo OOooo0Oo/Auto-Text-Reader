@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TTS</title>
+{#    https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js#}
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+    <script charset="utf-8">
+        var clear_board = function(){
+            $("#id_chat_area").val("")
+            $("#text").val("")
+        }
+
+        var socket
+        {#刷新页面，向后端请求新的text#}
+        var refresh = function () {
+                socket.emit("refresh")
+                clear_board();
+        }
+
+        {#计时器 无限循环，每隔一段时间请求后端#}
+        var interval
+        var set_timer = function () {
+            interval = setInterval(function() {
+                refresh()
+            }, 500)
+        }
+
+        {#将框内的文字发送给后端#}
+        var send_text = function () {
+            text = $('#id_chat_area').val()
+            console.log("***send_text " + text)
+            socket.emit("send_to_be", {msg: text})
+        }
+
+        $(document).ready(function() {
+            {#连接#}
+            socket = io.connect("ws://" + document.domain + ":" + location.port + "/chat")
+            socket.on('connect', function() {
+                console.log('connect')
+                clear_board()
+            })
+
+
+            {#收消息 并取消计时器#}
+            socket.on("text_to_fe", function (data) {
+                clear_board()
+                $('#id_chat_area').val($('#id_chat_area').val() + '<' + data.msg + '>\n')
+                clearInterval(interval)
+                console.log("***clearInterval")
+            })
+
+            {#设置计时器#}
+            set_timer()
+
+            {#点击按钮，发送信息给后端，并重新设置定时器#}
+            $("#id_button_refresh").on("click", function(e){
+                {#将修改后的文字，发送给后端#}
+                send_text()
+                clear_board();
+                set_timer()
+            })
+        })
+    </script>
+</head>
+<body>
+    <div id='id-div-channels' class="rc-left">
+        <h1 id = 'id-div-channels-title'>Chat</h1>
+    </div>
+    <textarea id="id_chat_area" cols="80" rows="20"></textarea><br><br>
+    <button id="id_button_refresh">Speech</button>
+</body>
+</html>
