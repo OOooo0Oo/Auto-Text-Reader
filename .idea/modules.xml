@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Auto-Text-Reader.iml" filepath="$PROJECT_DIR$/Auto-Text-Reader.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Auto-Text-Reader/Text-to-Speech-Python.iml" filepath="$PROJECT_DIR$/Auto-Text-Reader/Text-to-Speech-Python.iml" />
     </modules>
   </component>
 </project>
